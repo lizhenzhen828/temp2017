@@ -25,4 +25,33 @@ git add xxx :把指定的文件提交到暂存区
 git status
 查看当前工作区中的文件的状态
 红色：还没有提交到暂存区
-绿色;
+绿色;还没有提交到历史区
+
+把暂存区的内容统一提交到历史区  ，提交到历史区的内容，会生成相关的版本和历史记录以后如果想回滚到某一次的代码
+可以使用git命令迁出对应的版本即可
+git commit -m'xxxx':把暂存区的内容提交到历史区 -m后面的内容都是对本次提交新版本的说明
+
+中央服务器
+真正项目中，公司一般都会有一台自己内部的中央git仓库管理服务器；我们也可以使用开源免费的git仓库(gitHub)来作为我们的中央服务器仓库；
+
+A可以把自己本地的代码版本信息推送到中央服务器上（其它人也可以）
+B如果想看A的信息，只需要在中央服务器上拉取最新的内容即可
+
+
+1、基于gitHub创建自己的中央仓库（远程仓库）
+
+创建完成会生成一个远程仓库地址
+HTTPS (常用的)
+https://github.com/xxx/xxx.git
+SSH
+git@github.com:xxx/xxx.git
+
+把本地版本代码推送到中央仓库上
+1）让本地仓库和远程仓库建立连接通道
+git remote add [name:一般叫做origin][远程仓库地址]
+git remote rm[name]
+git remove -v ：查看当前本地仓库所有的连接通道
+git remove update [name]
+2)把本机仓库代码和版本信息推送（拉取）到远程仓库上
+git push origin master 推送
+git pull origin master 拉取
